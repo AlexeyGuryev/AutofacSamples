@@ -75,6 +75,10 @@ namespace SimpleSamples
         public static void Main(string[] args)
         {
             var builder = new ContainerBuilder();
+            
+            // Prevent registration from changing default
+//            builder.RegisterType<EmailLogger>().As<ILogger>();
+//            builder.RegisterType<ConsoleLogger>().As<ILogger>().PreserveExistingDefaults(); // without this we'll get the first variant
 
             // Custom instantiation
 //            var logger = new EmailLogger();

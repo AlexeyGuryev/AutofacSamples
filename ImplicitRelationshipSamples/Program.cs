@@ -1,5 +1,6 @@
 ﻿using System;
 using Autofac;
+using Autofac.Features.OwnedInstances;
 
 namespace ImplicitRelationshipSamples
 {
@@ -50,22 +51,35 @@ namespace ImplicitRelationshipSamples
 
         public class Reporting
         {
+            private Owned<ConsoleLogger> ownedLogger;
             private readonly Func<SmsLogger> logger;
 
-            public Reporting(Func<SmsLogger> logger)
+            public Reporting(Func<SmsLogger> logger, Owned<ConsoleLogger> ownedLogger)
             {
                 if (logger == null)
                 {
                     throw new ArgumentNullException(nameof(logger));
                 }
-                
+
+                if (ownedLogger == null)
+                {
+                    throw new ArgumentNullException(nameof(ownedLogger));                    
+                }
+
                 this.logger = logger;
+                this.ownedLogger = ownedLogger;
             }
 
             public void Report()
             {
                 logger().Write("Hello one!");
                 logger().Write("Hello two!");
+            }
+
+            public void ReportOnce()
+            {
+                ownedLogger.Value.Write("Report once");
+                ownedLogger.Dispose();
             }
         }
         
@@ -80,6 +94,7 @@ namespace ImplicitRelationshipSamples
             {
                 c.Resolve<Reporting>().Report();
                 c.Resolve<Reporting>().Report();
+                c.Resolve<Reporting>().ReportOnce();
                 Console.WriteLine("Done");
             }
         }

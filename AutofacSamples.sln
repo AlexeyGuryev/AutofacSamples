@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleSamples", "SimpleSamp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvancedRegistrationSamples", "AdvancedRegistrationSamples\AdvancedRegistrationSamples.csproj", "{7F33A943-386A-4F32-8812-41CB04FEBD79}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImplicitRelationshipSamples", "ImplicitRelationshipSamples\ImplicitRelationshipSamples.csproj", "{BBFF52CF-64CB-481D-838F-405B935F1C32}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{7F33A943-386A-4F32-8812-41CB04FEBD79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F33A943-386A-4F32-8812-41CB04FEBD79}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F33A943-386A-4F32-8812-41CB04FEBD79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBFF52CF-64CB-481D-838F-405B935F1C32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBFF52CF-64CB-481D-838F-405B935F1C32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBFF52CF-64CB-481D-838F-405B935F1C32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBFF52CF-64CB-481D-838F-405B935F1C32}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

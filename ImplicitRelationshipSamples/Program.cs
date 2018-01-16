@@ -26,6 +26,7 @@ namespace ImplicitRelationshipSamples
     
         public class SmsLogger : ILogger
         {
+            private readonly Guid instanseId = Guid.NewGuid();
             private readonly string number;
 
             public SmsLogger()
@@ -40,7 +41,7 @@ namespace ImplicitRelationshipSamples
 
             public void Write(string message)
             {
-                Console.WriteLine(string.Format("SMS to: {0}, with text: {1}", number, message));
+                Console.WriteLine(string.Format("[{2}] SMS to: {0}, with text: {1}", number, message, instanseId));
             }
 
             public void Dispose()
@@ -53,27 +54,25 @@ namespace ImplicitRelationshipSamples
         {
             private Owned<ConsoleLogger> ownedLogger;
             private readonly Func<SmsLogger> logger;
+            private readonly Func<string, SmsLogger> loggerWithParam;
 
-            public Reporting(Func<SmsLogger> logger, Owned<ConsoleLogger> ownedLogger)
+            public Reporting(Func<SmsLogger> logger, Owned<ConsoleLogger> ownedLogger, Func<string, SmsLogger> loggerWithParam)
             {
-                if (logger == null)
-                {
-                    throw new ArgumentNullException(nameof(logger));
-                }
-
-                if (ownedLogger == null)
-                {
-                    throw new ArgumentNullException(nameof(ownedLogger));                    
-                }
+                if (logger == null) throw new ArgumentNullException(nameof(logger));
+                if (ownedLogger == null) throw new ArgumentNullException(nameof(ownedLogger));
+                if (loggerWithParam == null) throw new ArgumentNullException(nameof(loggerWithParam));
 
                 this.logger = logger;
                 this.ownedLogger = ownedLogger;
+                this.loggerWithParam = loggerWithParam;
             }
 
             public void Report()
             {
                 logger().Write("Hello one!");
                 logger().Write("Hello two!");
+                loggerWithParam("123").Write("Hello one with param!");
+                loggerWithParam("123").Write("Hello two with param!");
             }
 
             public void ReportOnce()

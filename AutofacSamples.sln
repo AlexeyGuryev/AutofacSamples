@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvancedRegistrationSamples
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImplicitRelationshipSamples", "ImplicitRelationshipSamples\ImplicitRelationshipSamples.csproj", "{BBFF52CF-64CB-481D-838F-405B935F1C32}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnumerationSample", "EnumerationSample\EnumerationSample.csproj", "{75E272E3-495C-4AAC-9C61-7C5C9F176CAB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{BBFF52CF-64CB-481D-838F-405B935F1C32}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BBFF52CF-64CB-481D-838F-405B935F1C32}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BBFF52CF-64CB-481D-838F-405B935F1C32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75E272E3-495C-4AAC-9C61-7C5C9F176CAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75E272E3-495C-4AAC-9C61-7C5C9F176CAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75E272E3-495C-4AAC-9C61-7C5C9F176CAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75E272E3-495C-4AAC-9C61-7C5C9F176CAB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

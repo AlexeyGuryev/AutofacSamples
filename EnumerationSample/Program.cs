@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Autofac;
+using Autofac.Features.Indexed;
 
 namespace EnumerationSample
 {
@@ -52,27 +53,46 @@ namespace EnumerationSample
 
         public class Reporting
         {
-            private IList<ILogger> loggers;
-
-            public Reporting(IList<ILogger> loggers)
+            // Enumeration
+//            private IList<ILogger> loggers;
+//
+//            public Reporting(IList<ILogger> loggers)
+//            {
+//                this.loggers = loggers;                
+//            }
+//            public void Report()
+//            {
+//                foreach (var logger in loggers)
+//                {
+//                    logger.Write(string.Format("Hello, this is {0}!", logger.GetType().Name));
+//                }
+//            }            
+            
+            // Dictionary
+            private IIndex<string, ILogger> loggersDictionary;
+            
+            public Reporting(IIndex<string, ILogger> loggersDictionary)
             {
-                this.loggers = loggers;
+                this.loggersDictionary = loggersDictionary;
             }
 
             public void Report()
             {
-                foreach (var logger in loggers)
-                {
-                    logger.Write(string.Format("Hello, this is {0}!", logger.GetType().Name));
-                }
+                loggersDictionary["sms"].Write("Hello from dictionary of loggers!");
             }
         }
         
         public static void Main(string[] args)
         {
             var builder = new ContainerBuilder();
-            builder.Register(c => new SmsLogger("123")).As<ILogger>();
-            builder.RegisterType<ConsoleLogger>().As<ILogger>();
+            
+            // Enumeration
+//            builder.Register(c => new SmsLogger("123")).As<ILogger>();
+//            builder.RegisterType<ConsoleLogger>().As<ILogger>();
+            
+            // Dictionary
+            builder.RegisterType<ConsoleLogger>().Keyed<ILogger>("cmd");
+            builder.Register(c => new SmsLogger("123")).Keyed<ILogger>("sms");
             builder.RegisterType<Reporting>();
 
             using (var c = builder.Build())
